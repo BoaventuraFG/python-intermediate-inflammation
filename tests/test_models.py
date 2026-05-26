@@ -30,13 +30,15 @@ def test_daily_max_string():
     with pytest.raises(TypeError):
         error_expected = daily_max(["Helo", "There"])
 
-def test_daily_max():
+@pytest.mark.parametrize(
+        "test_input, test_result",
+        [
+            (np.array([[-1, 2], [3, -4], [5, 6]]), np.array([5, 6])),
+            (np.array([[-1, 2], [3, -4], [-5, -6]]), np.array([3, 2])),
+        ]
+)
+def test_daily_max(test_input, test_result):
     """Test that max function works for an array of positive and negative integers."""
-
-    test_input = np.array([[-1, 2],
-                           [3, -4],
-                           [5, 6]])
-    test_result = np.array([5, 6])
 
     # Need to use Numpy testing functions to compare arrays
     npt.assert_array_equal(daily_max(test_input), test_result)
