@@ -11,6 +11,7 @@ from inflammation.models import daily_mean, daily_max, daily_min
         [
             ([[0, 0], [0, 0], [0,0]], [0, 0]),
             ([[1, 2], [3, 4], [5, 6]], [3, 4]),
+            (np.zeros((3, 5)), np.zeros(5)),
         ]
 )
 def test_daily_mean(test_input, test_result):
