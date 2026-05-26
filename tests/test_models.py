@@ -15,20 +15,21 @@ from inflammation.models import daily_mean, daily_max, daily_min
         ]
 )
 def test_daily_mean(test_input, test_result):
-    """ Test that mean function works for both zeroes and integers"""
+    """Test that mean function works for both zeroes and integers"""
 
     npt.assert_array_equal(daily_mean(test_input), test_result)
 
 def test_daily_mean_strings():
+    """Test for TypeError when parsing strings."""
     
     with pytest.raises(TypeError):
-        error_expected = daily_mean(["mean", "test"])
+        error_expected = daily_mean(["mean", "test"])    # noqa: F841
 
 def test_daily_max_string():
-    """Test for TypeError when parsing strings.
-    """
+    """Test for TypeError when parsing strings."""
+
     with pytest.raises(TypeError):
-        error_expected = daily_max(["Helo", "There"])
+        error_expected = daily_max(["Helo", "There"])   # noqa: F841
 
 @pytest.mark.parametrize(
         "test_input, test_result",
