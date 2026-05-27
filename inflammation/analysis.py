@@ -5,7 +5,7 @@ import os
 import numpy as np
 import argparse
 
-from inflammation import models, views
+from inflammation import models
 
 
 def analyse_data(data_dir):
