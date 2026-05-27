@@ -2,9 +2,12 @@
 
 from inflammation.models import Patient
 
+import numpy.testing as npt
+
+
 def test_create_patient():
 
-    name = 'Alice'
+    name = "Alice"
     weight = 50
     height = 1.8
 
@@ -13,4 +16,15 @@ def test_create_patient():
     assert p.name == name
     assert p.weight == weight
     assert p.height == height
-    # assert p.get_body_mass_index() == (weight / height**2)
+
+
+def test_compute_bmi():
+
+    name = "maria"
+    weight = 60
+    height = 1.6
+    expeted_bmi = weight / height**2
+
+    p = Patient(name=name, weight=weight, height=height)
+
+    npt.assert_almost_equal(p.get_body_mass_index(), expeted_bmi)
