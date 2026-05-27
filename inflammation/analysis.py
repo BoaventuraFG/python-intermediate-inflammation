@@ -7,13 +7,10 @@ import argparse
 
 from inflammation import models, views
 
-def load_data(data_dir):
-    """Gets all the inflammation data from CSV files within a directory
 
-    :param data_dir: _description_
-    :raises ValueError: _description_
-    :return: _description_
-    """
+def load_data(data_dir):
+    """Gets all the inflammation data from CSV files within a directory."""
+
     data_file_paths = glob.glob(os.path.join(data_dir, "inflammation*.csv"))
     if len(data_file_paths) == 0:
         raise ValueError(f"No inflammation data CSV files found in path {data_dir}")
@@ -33,9 +30,7 @@ def analyse_data(data_dir):
 
     daily_standard_deviation = np.std(means_by_day_matrix, axis=0)
 
-    graph_data = {
-         "standard deviation by day": daily_standard_deviation
-    }
+    graph_data = {"standard deviation by day": daily_standard_deviation}
     views.visualize(graph_data)
 
     return daily_standard_deviation
